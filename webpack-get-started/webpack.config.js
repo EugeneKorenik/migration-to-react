@@ -7,7 +7,7 @@ module.exports = {
         main: path.resolve('src', 'index.js'),
     },
     output: {
-        filename: '[name].[contenthash].js',
+        filename: '[name].js',
         clean: true
     },
     plugins: [

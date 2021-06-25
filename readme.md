@@ -1,0 +1,1 @@
+# For starting put tomcat server to root directory and run 'install.cmd'

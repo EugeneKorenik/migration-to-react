@@ -1,0 +1,1 @@
+build-front.cmd & deploy-to-tomcat.cmd
