@@ -9,35 +9,34 @@ import {
 const EmptyComponent = React.lazy(() => import('./EmptyComponent'));
 const JQueryComponent = React.lazy(() => import('./JQueryComponent'));
 const LodashComponent = React.lazy(() => import("./LodashComponent"));
+const JspComponent = React.lazy(() => import("./JspComponent"));
 
 const Application = (props) => {
+
     return (
         <div className="application">
+            <h2>Welcome to the internet</h2>
+            <h2>This is our new and not legacy application</h2>
             <NavigationBar />
             <Switch>
-                <Route path="/empty">
-                    <Suspense fallback={<div>Loading...</div>}>
-                        <EmptyComponent />
-                    </Suspense>
-                </Route>
-            </Switch>
-            <Switch>
-                <Route path="/jquery">
-                    <Suspense fallback={<div>Loading...</div>}>
-                        <JQueryComponent />
-                    </Suspense>
-                </Route>
-            </Switch>
-            <Switch>
-                <Route path="/lodash">
-                    <Suspense fallback={<div>Loading...</div>}>
-                        <LodashComponent />
-                    </Suspense>
-                </Route>
+                {wrapComponent(<EmptyComponent />, '/empty')}
+                {wrapComponent(<JQueryComponent />, '/jquery')}
+                {wrapComponent(<LodashComponent />, '/lodash')}
+                {wrapComponent(<JspComponent />, "/vehicles")}
             </Switch>
             <input type="hidden" value="emptyValue" />
         </div>
     );
 };
+
+const wrapComponent = (component, path) => {
+    return (
+        <Route path={path}>
+            <Suspense fallback={<div>Loading...</div>}>
+                {component}
+            </Suspense>
+        </Route>
+    );
+}
 
 export default Application;
