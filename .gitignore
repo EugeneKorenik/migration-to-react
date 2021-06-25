@@ -1,0 +1,5 @@
+.idea
+target
+webpack-get-started/node_modules
+webpack-get-started/dist
+apache-tomcat
